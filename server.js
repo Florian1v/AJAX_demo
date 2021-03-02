@@ -4,7 +4,7 @@ var url = require('url')
 var port = process.argv[2]
 
 if(!port){
-  console.log('请指定端口号好不啦？\nnode server.js 8888 这样不会吗？')
+  console.log('请指定端口号\nnode server.js 8888 这样不会吗？')
   process.exit(1)
 }
 
@@ -19,7 +19,7 @@ var server = http.createServer(function(request, response){
 
   /******** 从这里开始看，上面不要看 ************/
 
-  console.log('有个傻子发请求过来啦！路径（带查询参数）为：' + pathWithQuery)
+  console.log('请求过来啦！路径（带查询参数）为：' + pathWithQuery)
 
   if(path === '/index.html'){
     response.statusCode = 200
@@ -41,25 +41,25 @@ var server = http.createServer(function(request, response){
     response.setHeader('Content-Type', 'text/css;charset=utf-8')
     response.write(fs.readFileSync('public/style.css'))
     response.end()
-  } else if(path === '/2.js'){
+  } else if(path === '/getJavaScript.js'){
     response.statusCode = 200
     response.setHeader('Content-Type', 'text/javascript;charset=utf-8')
-    response.write(fs.readFileSync('public/2.js'))
+    response.write(fs.readFileSync('public/getJavaScript.js'))
     response.end()
-  } else if(path === '/3.html'){
+  } else if(path === '/getHTML.html'){
     response.statusCode = 200
     response.setHeader('Content-Type', 'text/html;charset=utf-8')
-    response.write(fs.readFileSync('public/3.html'))
+    response.write(fs.readFileSync('public/getHTML.html'))
     response.end()
-  } else if(path === '/4.xml'){
+  } else if(path === '/getXML.xml'){
     response.statusCode = 200
     response.setHeader('Content-Type', 'text/xml;charset=utf-8')
-    response.write(fs.readFileSync('public/4.xml'))
+    response.write(fs.readFileSync('public/getXML.xml'))
     response.end()
-  } else if(path === '/5.json'){
+  } else if(path === '/getJSON.json'){
     response.statusCode = 200
     response.setHeader('Content-Type', 'text/json;charset=utf-8')
-    response.write(fs.readFileSync('public/5.json'))
+    response.write(fs.readFileSync('public/getJSON.json'))
     response.end()
   } else if(path === '/page2'){
     response.statusCode = 200
@@ -82,4 +82,4 @@ var server = http.createServer(function(request, response){
 })
 
 server.listen(port)
-console.log('监听 ' + port + ' 成功\n请用在空中转体720度然后用电饭煲打开 http://localhost:' + port)
+console.log('监听 ' + port + ' 成功\n打开 http://localhost:' + port)
